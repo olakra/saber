@@ -82,4 +82,10 @@ lint/intermediates/
 lint/generated/
 lint/outputs/
 lint/tmp/
-# lint/reports/
+lint/reports/
+
+
+# MacOS
+.DS_Store?
+ehthumbs.db
+Thumbs.db
