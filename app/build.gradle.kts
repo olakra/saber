@@ -1,17 +1,20 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("kotlin-android-extensions")
 }
 
 android {
-    compileSdk = 31
+    compileSdk = Versions.SDK.COMPILE
 
     defaultConfig {
+        minSdk = Versions.SDK.MINIMUM
+        targetSdk = Versions.SDK.TARGET
+
         applicationId = "com.oscarlakra.learning.android.saber"
-        minSdk = 30
-        targetSdk = 31
-        versionCode = 1
-        versionName = "1.0"
+
+        versionCode = Versions.App.versionCode
+        versionName = Versions.App.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -20,7 +23,7 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles (getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -46,17 +49,21 @@ android {
 }
 
 dependencies {
-    implementation ("androidx.core:core-ktx:1.7.0")
-    implementation ("androidx.appcompat:appcompat:1.4.0")
-    implementation ("com.google.android.material:material:1.4.0")
-    implementation ("androidx.compose.ui:ui:1.0.5")
-    implementation ("androidx.compose.material:material:1.0.5")
-    implementation ("androidx.compose.ui:ui-tooling-preview:1.0.5")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
-    implementation ("androidx.activity:activity-compose:1.4.0")
-    testImplementation ("junit:junit:4.13.2")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.0.5")
-    debugImplementation ("androidx.compose.ui:ui-tooling:1.0.5")
+    implementation (Library.Compose.ui)
+    implementation (Library.Compose.uiToolingPreview)
+    implementation (Library.Compose.material)
+    debugImplementation (Library.Compose.uiTooling)
+
+    implementation (Library.AndroidX.coreKtx)
+    implementation (Library.AndroidX.aptCompat)
+    implementation (Library.material)
+
+    implementation (Library.AndroidX.lifecycleRuntimeKtx)
+    implementation (Library.AndroidX.activityCompose)
+
+    testImplementation (Library.junit)
+
+    androidTestImplementation (Library.AndroidX.Test.junitExt)
+    androidTestImplementation (Library.AndroidX.Test.espressoCore)
+    androidTestImplementation (Library.Compose.uiTest)
 }
