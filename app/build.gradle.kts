@@ -29,12 +29,23 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.kotlin.kotlinStandardlibrary)
+    implementation(Dependencies.kotlin.kotlinStandardLibrary)
 
     implementation(Dependencies.androidX.core)
     implementation(Dependencies.androidX.appCompat)
 
-    implementation(Dependencies.material)
+    implementation(Dependencies.compose.ui)
+    implementation(Dependencies.compose.uiToolingPreview)
+    implementation(Dependencies.compose.foundation)
+    implementation(Dependencies.compose.material)
+    implementation(Dependencies.compose.materialIcons)
+    implementation(Dependencies.compose.materialIconsExtended)
+    implementation(Dependencies.compose.runtimeLiveData)
+    implementation(Dependencies.compose.runtimeRxJava)
+
+    debugImplementation(Dependencies.compose.uiTooling)
+
+    androidTestImplementation(Dependencies.compose.uiTest)
 
     // Testing dependencies
     implementation(Dependencies.test.junit)
